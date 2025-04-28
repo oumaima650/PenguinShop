@@ -3,22 +3,22 @@ services:
     image: amineelbiyadi/laravellinuxv1:latest
     container_name: laravel_app
     restart: always
-    working_dir: /var/www/backend
+    working_dir: /var/www
     volumes:
-      - ./backend:/var/www/backend
+      - .:/var/www
     command: >
       bash -c "
         chown -R www-data:www-data storage bootstrap/cache &&
         chmod -R 775 storage bootstrap/cache &&
         composer install &&
         php artisan migrate --force &&
+        php artisan db:seed --force &&
         php-fpm
       "
     ports:
       - "9000:9000"
     networks:
       - laravel
-
 
   nginx:
     image: nginx:latest
@@ -28,9 +28,8 @@ services:
       - "8000:80"
     volumes:
       - ./frontend:/var/www/frontend
-      - ./backend:/var/www/backend
+      - .:/var/www
       - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
-
     depends_on:
       - app
     networks:
