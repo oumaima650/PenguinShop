@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Shop</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+
+<nav class="navbar">
+    <div class="nav-logo">PenguinShop</div>
+    <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Products</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+    <div class="nav-cart">
+        🛒 Cart (0)
+        <button id="logout-btn" class="logout-button">Logout</button>
+    </div>
+</nav>
+
+
+<section class="hero">
+    <h1>Welcome to PenguinShop</h1>
+    <p>Discover the best products at amazing prices.</p>
+    <img class="logo" src="images/penguin.png">
+</section>
+
+
+<section class="products-section">
+    <h2>Popular Products</h2>
+    <div class="products-grid" id="product-list">
+
+    </div>
+</section>
+
+
+<template id="product-template">
+    <div class="product-card">
+        <img src="" alt="Product Image" class="product-image">
+        <h3 class="product-name"></h3>
+        <p class="product-price"></p>
+        <button class="add-to-cart-btn">Add to Cart</button>
+    </div>
+</template>
+
+<script src="js/app.js"></script>
+</body>
+</html>
