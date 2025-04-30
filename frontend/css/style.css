@@ -1,106 +1,252 @@
-/* Reset some default styles */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 * {
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+body {
+    animation: fadeIn 1s ease-in;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
-/* Navbar */
-.navbar {
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+    color: #1a1a1a;
+    line-height: 1.6;
+  }
+  
+  /* Navbar */
+  .navbar {
+    position: fixed;
+    z-index: 1000; 
+    width: 100%;
     background-color: #003049;
-    color: white;
+    color: #ffffff;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-}
-
-.nav-links {
+  }
+  
+  .nav-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .nav-links {
     list-style: none;
     display: flex;
-    gap: 2rem;
-}
-
-.nav-links a {
-    color: white;
+    gap: 1.5rem;
+  }
+  
+  .nav-links a {
+    color: #ffffff;
     text-decoration: none;
-    font-weight: bold;
-}
-
-.nav-cart {
-    background-color: #f77f00;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.hero {
-    text-align: center;
-    padding: 50px 20px;
-    background-color: #f4f4f4; /* Adjust according to your theme */
-}
-
-.hero h1 {
-    font-size: 2.5rem; /* Adjust size as needed */
-    color: #333; /* Adjust text color */
-}
-
-.hero p {
-    font-size: 1.2rem;
-    color: #666; /* Adjust text color */
-    margin-bottom: 20px;
-}
-
-.hero .logo {
-    max-width: 200px; /* Set a maximum width for the logo */
-    width: 100%; /* Make it responsive */
-    height: auto; /* Maintain aspect ratio */
-    margin-top: 20px; /* Add spacing above the logo */
-}
-
-
-/* Products */
-.products-section {
-    padding: 4rem 2rem;
-    text-align: center;
-}
-
-.products-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-.product-card {
-    background: #f1f1f1;
-    padding: 1rem;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-.product-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-.product-name {
-    margin-top: 1rem;
-    font-size: 1.2rem;
-}
-
-.product-price {
-    margin: 0.5rem 0;
-    font-weight: bold;
-}
-
-.add-to-cart-btn {
-    background-color: #f77f00;
-    color: white;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-links a:hover {
+    color: #fcbf49;
+  }
+  
+  .nav-cart {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .cart,
+  .logout-button {
+    background-color: #fcbf49;
     border: none;
-    padding: 0.7rem 1.2rem;
-    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    color: #1a1a1a;
+    font-weight: bold;
     cursor: pointer;
-}
+    border-radius: 0.3rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .cart:hover,
+  .logout-button:hover {
+    background-color: #f77f00;
+    color: #ffffff;
+  }
+  
+  /* Hero Section */
+  .hero {
+    text-align: center;
+    padding: 6rem 2rem;
+    background: linear-gradient(to right, #fcbf49, #f77f00);
+    color: #ffffff;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .hero .logo {
+    width: 150px;
+    height: auto;
+  }
+  
+
+  .products-section {
+    padding: 3rem 2rem;
+    background-color: #ffffff;
+    text-align: center;
+  }
+  
+  .products-section h2 {
+    font-size: 2rem;
+    color: #003049;
+    margin-bottom: 2rem;
+  }
+  
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 2rem;
+    justify-items: center;
+  }
+  
+  /* Product Card */
+  .product-card {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    width: 100%;
+    max-width: 250px;
+    transition: transform 0.2s ease;
+    
+  }
+  
+  .product-card:hover {
+    transform: scale(1.05);
+    
+  }
+  
+  .product-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 0.3rem;
+  }
+  
+  .product-name {
+    margin-top: 0.8rem;
+    font-size: 1.1rem;
+    color: #003049;
+  }
+  
+  .product-price {
+    color: #f77f00;
+    font-weight: bold;
+    margin: 0.5rem 0;
+  }
+  
+  .add-to-cart-btn {
+    background-color: #fcbf49;
+    border: none;
+    padding: 0.5rem 1rem;
+    color: #1a1a1a;
+    font-weight: bold;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-to-cart-btn:hover {
+    background-color: #f77f00;
+    color: #ffffff;
+  }
+  .contact-section {
+    width: 100%;
+    
+    max-width: 1000px;
+    background-color: #ffffff;
+    padding: 3rem 2.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease;
+    margin : auto;
+    margin-top: 20px; 
+  }
+  
+  .contact-section:hover {
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+  }
+  
+  .contact-section h2 {
+    font-size: 2rem;
+    color: #003049;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .contact-form label {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #003049;
+  }
+  
+  .contact-form input[type="text"],
+  .contact-form input[type="email"],
+  .contact-form input[type="number"],
+  .contact-form textarea {
+    padding: 0.8rem 1rem;
+    margin-bottom: 1.2rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    border-color: #fcbf49;
+    box-shadow: 0 0 6px rgba(252, 191, 73, 0.5);
+    outline: none;
+  }
+  
+  .submit-btn {
+    background-color: #fcbf49;
+    color: #003049;
+    font-weight: bold;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.8rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .submit-btn:hover {
+    background-color: #f77f00;
+    color: #fff;
+    transform: scale(1.02);
+  }
+  
+  @media (max-width: 480px) {
+    .contact-section {
+      padding: 2rem 1.5rem;
+    }
+  }
+  
