@@ -1,26 +1,36 @@
-document.getElementById('loginForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('loginForm');
 
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
+    form.addEventListener('submit', async function (e) {
+        e.preventDefault();
 
-    try {
-        const response = await fetch('http://localhost:8000/api/login', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, password })
-        });
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value.trim();
 
-        if (response.ok) {
+        try {
+            const response = await fetch('http://localhost:8000/api/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email, password })
+            });
+
+            if (!response.ok) {
+                const error = await response.json();
+                throw new Error(error.message || 'Invalid credentials');
+            }
+
             const token = await response.text();
             localStorage.setItem('auth_token', token);
 
+            // Rediriger vers la page principale
             window.location.href = 'index.html';
-        } else {
-            const error = await response.text();
-            alert('Login failed: ' + error);
+
+        } catch (error) {
+            console.error('Login error:', error.message);
+            alert('erreur' + error.message);
         }
-    } catch (error) {
-        alert('Network error: ' + error.message);
-    }
+    });
 });
+
