@@ -52,8 +52,19 @@ document.addEventListener('DOMContentLoaded', () => {
             products.forEach(product => {
                 const clone = document.getElementById('product-template').content.cloneNode(true);
                 clone.querySelector('.product-name').textContent = product.name;
-                clone.querySelector('.product-price').textContent = `Price: ${product.price}DHs`;
+
+                clone.querySelector('.product-price').textContent = `${product.price} DHs`;
                 clone.querySelector('.product-image').src = product.image || 'https://via.placeholder.com/250';
+
+                // Ajoutez ceci pour rendre le nom et l'image cliquables
+                clone.querySelector('.product-name').style.cursor = 'pointer';
+                clone.querySelector('.product-image').style.cursor = 'pointer';
+                clone.querySelector('.product-name').addEventListener('click', () => {
+                    window.location.href = `produit.html?id=${product.id}`;
+                });
+                clone.querySelector('.product-image').addEventListener('click', () => {
+                    window.location.href = `produit.html?id=${product.id}`;
+                });
 
 
                 clone.querySelector('.add-to-cart-btn').addEventListener('click', () => addToCart(product));
