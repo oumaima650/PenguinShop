@@ -1,3 +1,6 @@
+const urlParams = new URLSearchParams(window.location.search);
+const redirectTo = urlParams.get('redirect') || 'index.html'; // Default to 'index.html' if no redirect param
+
 document.getElementById('loginForm').addEventListener('submit', async function(e) {
     e.preventDefault();
 
@@ -15,7 +18,8 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
             const token = await response.text();
             localStorage.setItem('auth_token', token);
 
-            window.location.href = 'index.html';
+            // Redirect user to the page they were trying to access before logging in
+            window.location.href = redirectTo;
         } else {
             const error = await response.text();
             alert('Login failed: ' + error);
