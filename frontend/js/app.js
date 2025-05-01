@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const token = localStorage.getItem('auth_token');
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
+
     const cartCount = document.getElementById('cart-count');
     const productList = document.getElementById('product-list');
 
@@ -42,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => {
             if (!response.ok) {
                 console.error('Server response:', response.status, response.statusText);
+
                 throw new Error('Failed to fetch products');
             }
             return response.json();
@@ -50,15 +52,18 @@ document.addEventListener('DOMContentLoaded', () => {
             products.forEach(product => {
                 const clone = document.getElementById('product-template').content.cloneNode(true);
                 clone.querySelector('.product-name').textContent = product.name;
-                clone.querySelector('.product-price').textContent = `Price: $${product.price}`;
+                clone.querySelector('.product-price').textContent = `Price: ${product.price}DHs`;
                 clone.querySelector('.product-image').src = product.image || 'https://via.placeholder.com/250';
 
+
                 clone.querySelector('.add-to-cart-btn').addEventListener('click', () => addToCart(product));
+
 
                 productList.appendChild(clone);
             });
         })
         .catch(error => {
+
             console.error('Error fetching products:', error);
 
             // Show detailed error in console for debugging
@@ -101,6 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 3000);
     }
 
+
     const logoutBtn = document.getElementById('logout-btn');
     if (logoutBtn) {
         logoutBtn.addEventListener('click', () => {
@@ -109,6 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = 'login.html';
         });
     }
+
 
     // Add login button if user is not authenticated
     const headerActions = document.querySelector('.header-actions') || document.createElement('div');
@@ -123,4 +130,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     updateCartCount();
+
 });
