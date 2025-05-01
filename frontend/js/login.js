@@ -1,5 +1,10 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('loginForm');
+
+const urlParams = new URLSearchParams(window.location.search);
+const redirectTo = urlParams.get('redirect') || 'index.html'; // Default to 'index.html' if no redirect param
+
+document.getElementById('loginForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
 
     form.addEventListener('submit', async function (e) {
         e.preventDefault();
@@ -24,12 +29,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const token = await response.text();
             localStorage.setItem('auth_token', token);
 
-            // Rediriger vers la page principale
-            window.location.href = 'index.html';
+            // Redirect user to the page they were trying to access before logging in
+            window.location.href = redirectTo;
+        } else {
+            const error = await response.text();
+            alert('Login failed: ' + error);
 
-        } catch (error) {
-            console.error('Login error:', error.message);
-            alert('erreur' + error.message);
         }
     });
 });

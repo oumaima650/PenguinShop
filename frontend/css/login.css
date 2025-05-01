@@ -3,9 +3,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
   }
   
   body {
+
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #003049, #1a1a1a);
     color: #333;
@@ -14,10 +16,9 @@
     align-items: center;
     min-height: 100vh;
     padding: 2rem;
+
     
   }
-  
-  
   .login-container {
     background-color: #fff;
     border-radius: 1rem;
@@ -33,10 +34,12 @@
   }
   
   .login-container h1 {
+
     font-size: 2rem;
     color: #003049;
     text-align: center;
     margin-bottom: 2rem;
+
   }
   
  
@@ -47,12 +50,14 @@
   
   input[type="email"],
   input[type="password"] {
+
     padding: 0.8rem 1rem;
     margin-bottom: 1.2rem;
     border: 1px solid #ccc;
     border-radius: 0.5rem;
     font-size: 1rem;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
   }
   
   input:focus {
@@ -63,6 +68,7 @@
   
  
   button[type="submit"] {
+
     background-color: #fcbf49;
     color: #003049;
     font-weight: bold;
@@ -71,6 +77,7 @@
     padding: 0.8rem 1rem;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
+
   }
   
   button[type="submit"]:hover {
@@ -87,10 +94,12 @@
   }
   
   .login-container a {
+
     color: #f77f00;
     font-weight: 600;
     text-decoration: none;
     transition: color 0.3s ease;
+
   }
   
   .login-container a:hover {

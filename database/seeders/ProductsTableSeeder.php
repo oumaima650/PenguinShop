@@ -61,6 +61,6 @@ class ProductsTableSeeder extends Seeder
             'price' => 39,
             'image' => url('https://store.moma.org/cdn/shop/products/e86382f5-75cc-4845-b2fb-e406af0d41eb.jpg?v=1707428961')
         ]);
-    
+
     }
 }

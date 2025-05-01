@@ -11,5 +11,8 @@ class Product extends Model
 
     protected $fillable = ['name', 'price', 'image'];
 
-
+    public function commandes()
+    {
+        return $this->belongsToMany(Commande::class)->withPivot('quantity', 'price');
+    }
 }

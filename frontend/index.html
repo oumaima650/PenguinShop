@@ -8,7 +8,6 @@
 </head>
 <body>
 
-
 <nav class="navbar">
     <div class="nav-logo">PenguinShop</div>
     <ul class="nav-links">
@@ -17,12 +16,12 @@
         <li><a href="#contact">Contact</a></li>
     </ul>
     <div class="nav-cart">
-        <button id="Your-cart" class="cart">🛒 Your Cart</button>
+
+        <button id="your-cart" class="cart" onclick="window.location.href='cart.html'">🛒 Your Cart</button>
+
         <button id="logout-btn" class="logout-button">Logout</button>
     </div>
 </nav>
-
-
 <section class="hero" id="home">
     <h1>Welcome to PenguinShop</h1>
     <p>Discover the best products at amazing prices.</p>
@@ -37,7 +36,6 @@
     </div>
 </section>
 
-
 <template id="product-template">
     <div class="product-card">
         <img src="" alt="Product Image" class="product-image">
@@ -47,9 +45,18 @@
     </div>
 </template>
 
+
+<template id="cart-item-template">
+    <div class="cart-item">
+        <p class="cart-item-name"></p>
+        <p class="cart-item-quantity"></p>
+        <p class="cart-item-price"></p>
+    </div>
+</template>
 <section class="contact-section" id="contact">
     <h2>Get in touch</h2>
-    <form class="contact-form" id="contact">
+    <form class="contact-form">
+
         <label for="name">Name</label>
         <input type="text" id="name" name="name" required>
 
@@ -63,9 +70,12 @@
         <textarea id="message" name="message" rows="4" required></textarea>
 
         <button type="submit" class="submit-btn">Send Message</button>
-        
+
+
     </form>
 </section>
+<div id="toast" class="toast"></div>
+
 <script src="js/app.js"></script>
 </body>
 </html>
