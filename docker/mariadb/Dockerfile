@@ -9,15 +9,6 @@ RUN apt-get update && \
 # Expose MariaDB port
 EXPOSE 3306
 
-
-
-
-
-
-
-
-
-
 # Fix permissions
 RUN mkdir -p /var/run/mysqld && chown -R mysql:mysql /var/run/mysqld
 RUN chown -R mysql:mysql /var/lib/mysql
