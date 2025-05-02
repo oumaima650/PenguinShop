@@ -1,31 +1,32 @@
 # docker/mariadb/Dockerfile
 FROM ubuntu:20.04
 
+ENV DEBIAN_FRONTEND=noninteractive
+
 # Install MariaDB
 RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y mariadb-server && \
-    apt-get clean
+    apt-get install -y mariadb-server && \
+    rm -rf /var/lib/apt/lists/*
 
-# Expose MariaDB port
-EXPOSE 3306
+# Create necessary directories and set permissions
+RUN mkdir -p /var/run/mysqld && \
+    chown -R mysql:mysql /var/run/mysqld && \
+    chown -R mysql:mysql /var/lib/mysql
 
-
-
-
-
-
-
-
-
-
-# Fix permissions
-RUN mkdir -p /var/run/mysqld && chown -R mysql:mysql /var/run/mysqld
-RUN chown -R mysql:mysql /var/lib/mysql
-
-# Copy entrypoint script
-COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+# Copy custom config and entrypoint
+COPY my.cnf /etc/mysql/conf.d/my.cnf
+COPY docker-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
-ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
-CMD ["mysqld"]
+# Set environment variables
+ENV MYSQL_ROOT_PASSWORD=root \
+    MYSQL_DATABASE=projetlinux \
+    MYSQL_USER=root \
+    MYSQL_PASSWORD=root
 
+VOLUME /var/lib/mysql
+
+EXPOSE 3306
+
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
+CMD ["mysqld_safe"]
