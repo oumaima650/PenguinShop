@@ -7,7 +7,6 @@ ENV MYSQL_DATABASE=projetlinux
 # Copy custom configuration if needed
 COPY my.cnf /etc/mysql/conf.d/
 
-
 # Set the working directory
 WORKDIR /var/lib/mysql
 
