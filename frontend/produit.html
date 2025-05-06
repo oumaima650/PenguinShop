@@ -7,34 +7,34 @@
     <link rel="stylesheet" href="css/produit.css">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-logo">PenguinShop</div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="#">Products</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-        <div class="nav-cart">
-            <button id="your-cart" class="cart" onclick="window.location.href='cart.html'">🛒 Your Cart</button>
-        </div>
-    </nav>
+<nav class="navbar">
+    <div class="nav-logo">PenguinShop</div>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#products">Products</a></li>
+        <li><a href="index.html#contact">Contact us</a></li>
 
-    <div class="product-detail-container">
-        <template id="product-detail-template">
-            <div class="product-detail-card">
-                <img src="" alt="Product Image" class="product-detail-image">
-                <div class="product-detail-info">
-                    <h1 class="product-detail-name"></h1>
-                    <p class="product-detail-price"></p>
-                    <p class="product-detail-description"></p>
-                    <button class="add-to-cart-btn">Add to Cart</button>
-                </div>
-            </div>
-        </template>
-        <div id="product-detail-container"></div>
+    </ul>
+    <div class="nav-cart">
+        <button id="your-cart" class="cart" onclick="window.location.href='cart.html'">🛒 Your Cart</button>
     </div>
-    <div id="toast" class="toast"></div>
-    <script src="js/produit.js"></script>
+</nav>
+
+<div class="product-detail-container">
+    <template id="product-detail-template">
+        <div class="product-detail-card">
+            <img src="" alt="Product Image" class="product-detail-image">
+            <div class="product-detail-info">
+                <h1 class="product-detail-name"></h1>
+                <p class="product-detail-price"></p>
+                <p class="product-detail-description"></p>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+        </div>
+    </template>
+    <div id="product-detail-container"></div>
+</div>
+<div id="toast" class="toast"></div>
+<script src="js/produit.js"></script>
 </body>
 </html>

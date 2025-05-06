@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class CommandeController extends Controller
 {
-    // Fetch all orders for the logged-in user
+
     public function index()
     {
         $user = Auth::user();

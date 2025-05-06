@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         showToast(`${product.name} added to cart 🛒`);
     }
 
-    // Simplified product fetch now that we've fixed the API
+
     fetch('http://localhost:8000/api/products', {
         method: 'GET',
         headers: {
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 clone.querySelector('.product-price').textContent = `${product.price} DHs`;
                 clone.querySelector('.product-image').src = product.image || 'https://via.placeholder.com/250';
 
-                // Ajoutez ceci pour rendre le nom et l'image cliquables
+
                 clone.querySelector('.product-name').style.cursor = 'pointer';
                 clone.querySelector('.product-image').style.cursor = 'pointer';
                 clone.querySelector('.product-name').addEventListener('click', () => {
@@ -77,14 +77,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
             console.error('Error fetching products:', error);
 
-            // Show detailed error in console for debugging
+
             console.error('Full error details:', error);
 
-            // Try alternative approach if first attempt failed
+
             if (token) {
                 showToast('Trying alternative method to load products...');
 
-                // If we have a token but still got an error, try without token
                 fetch('http://localhost:8000/api/products')
                     .then(response => response.json())
                     .then(products => {
