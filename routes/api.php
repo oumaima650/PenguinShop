@@ -32,19 +32,15 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::middleware('auth:sanctum')->group(function() {
-    // Fetch all orders
     Route::get('commandes', [CommandeController::class, 'index']);
 
     Route::get('/my-commandes', [CommandeController::class, 'userCommandes']);
 
 
-    // Fetch a specific order by ID
     Route::get('commandes/{commande}', [CommandeController::class, 'show']);
     Route::get('/users', [UserController::class, 'index']);
-    // Place a new order
     Route::post('commandes', [CommandeController::class, 'store']);
 
-    // Product routes that should be protected
     Route::post('/products', [ProductController::class, 'store']);
 });
 

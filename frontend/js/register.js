@@ -1,6 +1,5 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('registerForm');
-
+document.getElementById('registerForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
 
     const name = document.getElementById('name').value;
     const address = document.getElementById('address').value;
@@ -13,17 +12,11 @@ document.addEventListener('DOMContentLoaded', () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, address, phone, email, password })
     });
-            if (response.ok) {
-                alert('Registration successful! Please log in.');
-                window.location.href = 'login.html';
-            } else {
-                const errorData = await response.json();
-                alert('Registration failed: ' + (errorData.message || 'Please try again.'));
-            }
-        } catch (error) {
-            console.error('Register error:', error);
-            alert('Something went wrong. Please try again later.');
-        }
-    });
-});
 
+    if (response.ok) {
+        alert('Registration successful. Please log in.');
+        window.location.href = 'login.html';
+    } else {
+        alert('Registration failed. Try again.');
+    }
+});

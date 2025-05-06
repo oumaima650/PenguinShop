@@ -51,12 +51,12 @@ document.addEventListener('DOMContentLoaded', () => {
     renderCart();
 
     checkoutBtn.addEventListener('click', () => {
-        // This is where we check for authentication ONLY when placing order
+
         const currentToken = token;
 
         if (!currentToken) {
-            // Redirect to login page if user is not logged in
-            const redirectTo = window.location.pathname; // Save current page as redirect
+
+            const redirectTo = window.location.pathname;
             window.location.href = `login.html?redirect=${encodeURIComponent(redirectTo)}`;
             return;
         }
