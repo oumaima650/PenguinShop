@@ -1,0 +1,74 @@
+services:
+  app:
+    image: amineelbiyadi/laravellinuxv1:latest
+    container_name: laravel_app
+    restart: always
+    working_dir: /var/www
+    volumes:
+      - .:/var/www
+    command: >
+      bash -c "
+        chown -R www-data:www-data storage bootstrap/cache &&
+        chmod -R 775 storage bootstrap/cache &&
+        composer install &&
+        php artisan migrate --force &&
+        php artisan db:seed --force &&
+        php-fpm
+      "
+    depends_on:
+      - mysql
+    ports:
+      - "9000:9000"
+    networks:
+      - laravel
+
+
+  nginx:
+    image: nginx:alpine
+    container_name: laravel_nginx
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+      - ./frontend:/var/www/frontend
+      - .:/var/www:cached
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - app
+    networks:
+      - laravel
+
+  mysql:
+    image: abdellatifbiti03/laravelmysql:latest
+    container_name: laravel_db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: projetlinux
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - laravel
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: laravel_phpmyadmin
+    restart: always
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: root
+    depends_on:
+      - mysql
+    networks:
+      - laravel
+
+networks:
+  laravel:
+    driver: bridge
+volumes:
+  mysql_data:
+    driver: local
