@@ -1,27 +1,36 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8" />-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>-->
-<!--    <title>Track your commande</title>-->
-<!--    <link rel="stylesheet" href="css/style.css" />-->
-<!--</head>-->
-<!--<body>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Track your commande</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
 
-<!--<nav class="navbar">-->
-<!--    <div class="nav-logo">PenguinShop</div>-->
-<!--    <ul class="nav-links">-->
-<!--        <li><a href="index.html#home">Home</a></li>-->
-<!--        <li><a href="index.html#products">Our Products</a></li>-->
-<!--        <li><a href="index.html#contact">Contact</a></li>-->
-<!--    </ul>-->
-<!--    <button id="logout-btn" class="logout-button">Logout</button>-->
-<!--</nav>-->
+<nav class="navbar">
+    <a href="/" class="nav-logo">
+        <img src="images/penguin.png" alt="PenguinShop Logo" class="logo-img">
+        PenguinShop</a>
+    <ul class="nav-links">
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="index.html#products">Our Products</a></li>
+        <li><a href="track-order.html">Your commands</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
 
-<!--<h1>Your Recent Commandes</h1>-->
-<!--<div id="orders-list"></div>-->
+    </ul>
+    <div class="nav-cart">
 
-<!--<script src="track-order.js"></script>-->
-<!--</body>-->
+        <button id="your-cart" class="cart" onclick="window.location.href='cart.html'">🛒 Your Cart</button>
 
-<!--</html>-->
+        <button id="logout-btn" class="logout-button">Logout</button>
+    </div>
+</nav>
+
+<h1>Your Recent Commandes</h1>
+<div id="orders-list"></div>
+
+<script src="js/track-order.js"></script>
+</body>
+
+</html>
